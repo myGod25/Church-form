@@ -1,16 +1,19 @@
 from flask import Flask, render_template, request
-import sqlite3
+import psycopg2
+import os
 
 app = Flask(__name__)
 
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
 # Create database and table
 def init_db():
-    conn = sqlite3.connect('church.db')
+    conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS members (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
             name TEXT,
             age INTEGER,
             phone TEXT,
@@ -36,12 +39,12 @@ def submit():
     whatsapp = request.form['whatsapp_number']
     email = request.form['email']
 
-    conn = sqlite3.connect('church.db')
+    conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
 
     cursor.execute('''
         INSERT INTO members (name, age, phone, whatsapp, email)
-        VALUES (?, ?, ?, ?, ?)
+        VALUES (%s, %s, %s, %s, %s)
     ''', (name, age, phone, whatsapp, email))
 
     conn.commit()
