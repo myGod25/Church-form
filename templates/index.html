@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}" />
+    <title>Amazing Grace Midyouth</title>
+  </head>
+  <body>
+    <h1>Amazing Grace Midyouth Fellowship</h1>
+    <h2>Fill this form to register</h2>
+    <form action="/submit" method="post">
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your full name"
+        required
+      /><br /><br />
+      <input
+        type="number"
+        id="age"
+        name="age"
+        placeholder="Enter your age"
+        required
+      /><br /><br />
+      <input
+        type="tel"
+        id="phone_number"
+        name="phone_number"
+        pattern="[0-9]{11}"
+        placeholder="Enter your phone number"
+        required
+      /><br /><br />
+      <input
+        type="tel"
+        id="whatsapp_number"
+        name="whatsapp_number"
+        pattern="[0-9]{11}"
+        placeholder="Enter your WhatsApp number"
+        required
+      /><br /><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email (optional)"
+      /><br /><br />
+      <h4>Gender</h4>
+      <label for="gender">
+        <input type="radio" name="gender" value="male" />
+        Male
+      </label>
+      <label for="gender">
+        <input type="radio" name="gender" value="female" />
+        Female
+      </label>
+      <h4>Are you born again?</h4>
+      <label for="born_again">
+        <input type="radio" name="born_again" value="yes" />
+        Yes
+      </label>
+      <label for="born_again">
+        <input type="radio" name="born_again" value="no" />
+        No
+      </label>
+
+      <h4>Have you attended this church before?</h4>
+      <label for="previous_attendance">
+        <input type="radio" name="previous_attendance" value="yes" />
+        Yes
+      </label>
+      <label for="previous_attendance">
+        <input type="radio" name="previous_attendance" value="no" />
+        No
+      </label>
+      <h4>How did you hear about our church?</h4>
+      <label for="heard_about_us">
+        <input type="radio" name="heard_about_us" value="friend" />
+        Friend
+      </label>
+      <label for="heard_about_us">
+        <input type="radio" name="heard_about_us" value="social_media" />
+        Social Media
+      </label>
+      <label for="heard_about_us">
+        <input type="radio" name="heard_about_us" value="evangelism" />
+        Evangelism
+      </label>
+      <label for="heard_about_us">
+        <input type="radio" name="heard_about_us" value="family_member" />
+        Family Member
+      </label>
+      <label for="heard_about_us">
+        <input type="radio" name="heard_about_us" value="other" />
+        Other
+      </label>
+      <h4>Preferred means of contact</h4>
+      <label for="preferred_contact">
+        <input type="radio" name="preferred_contact" value="call" />
+        Call
+      </label>
+      <label for="preferred_contact">
+        <input type="radio" name="preferred_contact" value="whatsapp" />
+        WhatsApp
+      </label>
+      <label for="preferred_contact">
+        <input type="radio" name="preferred_contact" value="sms" />
+        SMS
+      </label>
+      <h4>Would you like to join any workforce in the church?</h4>
+      <label for="workforce_interest">
+        <input type="radio" name="workforce_interest" value="yes" />
+        Yes
+      </label>
+      <label for="workforce_interest">
+        <input type="radio" name="workforce_interest" value="no" />
+        No
+      </label>
+      <h4>Prayer Requests</h4>
+      <textarea
+        name="prayer_requests"
+        placeholder="Enter your prayer requests"
+      ></textarea
+      ><br /><br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
