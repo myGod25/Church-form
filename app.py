@@ -92,7 +92,7 @@ def submit():
             workforce_interest,
             prayer_requests,
             heard_about_us_detail
-        ),
+        )
     )
     conn.commit()
     conn.close()
