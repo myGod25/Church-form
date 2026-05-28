@@ -66,8 +66,6 @@ def submit():
 
     cursor.execute(
     """
-  cursor.execute(
-    """
     INSERT INTO members (
         name, age, phone, whatsapp, email,
         gender, born_again, previous_attendance,
@@ -76,17 +74,9 @@ def submit():
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """,
     (
-        name,
-        age,
-        phone,
-        whatsapp,
-        email,
-        gender,
-        born_again,
-        previous_attendance,
-        heard_about_us,
-        preferred_contact,
-        workforce_interest
+        name, age, phone, whatsapp, email,
+        gender, born_again, previous_attendance,
+        heard_about_us, preferred_contact, workforce_interest
     ),
 )
     conn.commit()
