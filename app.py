@@ -66,6 +66,8 @@ def submit():
 
     cursor.execute(
     """
+  cursor.execute(
+    """
     INSERT INTO members (
         name, age, phone, whatsapp, email,
         gender, born_again, previous_attendance,
@@ -74,9 +76,17 @@ def submit():
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """,
     (
-        name, age, phone, whatsapp, email,
-        gender, born_again, previous_attendance,
-        heard_about_us, preferred_contact, workforce_interest
+        name,
+        age,
+        phone,
+        whatsapp,
+        email,
+        gender,
+        born_again,
+        previous_attendance,
+        heard_about_us,
+        preferred_contact,
+        workforce_interest
     ),
 )
     conn.commit()
@@ -146,6 +156,27 @@ def edit(id):
     conn.close()
 
     return render_template("edit.html", member=member)
+
+@app.route('/update-db')
+def update_db():
+
+    conn = psycopg2.connect(DATABASE_URL)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        ALTER TABLE members
+        ADD COLUMN IF NOT EXISTS gender TEXT,
+        ADD COLUMN IF NOT EXISTS born_again TEXT,
+        ADD COLUMN IF NOT EXISTS previous_attendance TEXT,
+        ADD COLUMN IF NOT EXISTS heard_about_us TEXT,
+        ADD COLUMN IF NOT EXISTS preferred_contact TEXT,
+        ADD COLUMN IF NOT EXISTS workforce_interest TEXT
+    """)
+
+    conn.commit()
+    conn.close()
+
+    return "Database updated successfully!"
 
 
 @app.route("/login", methods=["GET", "POST"])
