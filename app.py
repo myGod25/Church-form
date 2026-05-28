@@ -186,7 +186,7 @@ def login():
 
     <title>Admin Login</title>
 
-    <style>
+<style>
      body {
     margin: 0;
     font-family: Arial;
@@ -195,7 +195,7 @@ def login():
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
+  }
 
 /* LOGIN BOX */
 .login-box {
@@ -241,6 +241,8 @@ def login():
         max-width: 100%;
     }
 }
+
+</style>
 </head>
 
 <body>
