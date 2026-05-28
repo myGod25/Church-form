@@ -173,6 +173,8 @@ def login():
         if check_password_hash(hashed_password, password):
             session["admin"] = True
             return redirect("/members")
+        
+        return render_template("login.html")
 
     return """
 <!DOCTYPE html>
