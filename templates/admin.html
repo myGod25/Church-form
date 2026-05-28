@@ -6,6 +6,130 @@
 
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial;
+            background:#f4f6f9;
+        }
+
+        /* HEADER */
+        .header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:15px;
+            background:#2a5298;
+            color:white;
+        }
+
+        .btn{
+            padding:8px 12px;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+        }
+
+        .logout{
+            background:#ff4444;
+            color:white;
+        }
+
+        /* LAYOUT */
+        .container{
+            display:flex;
+            min-height:100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar{
+            width:220px;
+            background:#fff;
+            padding:15px;
+            border-right:1px solid #ddd;
+        }
+
+        .sidebar a{
+            display:block;
+            padding:10px;
+            text-decoration:none;
+            color:#333;
+            border-radius:6px;
+        }
+
+        .sidebar a:hover{
+            background:#2a5298;
+            color:white;
+        }
+
+        /* MAIN */
+        .main{
+            flex:1;
+            padding:15px;
+        }
+
+        .stats{
+            background:#fff;
+            padding:15px;
+            margin-top:10px;
+            border-radius:8px;
+        }
+
+        /* TABLE */
+        .table-container{
+            width:100%;
+            overflow-x:auto;
+            margin-top:15px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:#fff;
+            min-width:900px;
+        }
+
+        th,td{
+            padding:10px;
+            border-bottom:1px solid #ddd;
+            text-align:left;
+        }
+
+        th{
+            background:#2a5298;
+            color:white;
+        }
+
+        /* MOBILE */
+        @media(max-width:768px){
+            .container{
+                flex-direction:column;
+            }
+
+            .sidebar{
+                width:100%;
+                display:flex;
+                overflow-x:auto;
+                border-right:none;
+                border-bottom:1px solid #ddd;
+            }
+
+            .sidebar a{
+                flex:1;
+                text-align:center;
+                white-space:nowrap;
+            }
+
+            .header h2{
+                font-size:16px;
+            }
+
+            table{
+                min-width:700px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -14,56 +138,69 @@
     <a href="/logout"><button class="btn logout">Logout</button></a>
 </div>
 
-<div class="stats">
-    <h3>Total Members: {{ total }}</h3>
-</div>
-<div class="table-container">
-<div class="table-container">
+<div class="container">
 
-<table>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <a href="#">Dashboard</a>
+        <a href="#">Members</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+    </div>
 
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Phone</th>
-        <th>WhatsApp</th>
-        <th>Email</th>
-        <th>Gender</th>
-        <th>Born Again</th>
-        <th>Previous Attendance</th>
-        <th>Heard About Our Church</th>
-        <th>Preferred Contact</th>
-        <th>Workforce Interest</th>
-        <th>Prayer Requests</th>
-        <th>Action</th>
-    </tr>
+    <!-- MAIN -->
+    <div class="main">
 
-    {% for m in members %}
-    <tr>
-        <td>{{ m[0] }}</td>
-        <td>{{ m[1] }}</td>
-        <td>{{ m[2] }}</td>
-        <td>{{ m[3] }}</td>
-        <td>{{ m[4] }}</td>
-        <td>{{ m[5] }}</td>
-        <td>{{ m[6] }}</td>
-        <td>{{ m[7] }}</td>
-        <td>{{ m[8] }}</td>
-        <td>{{ m[9] }}</td>
-        <td>{{ m[10] }}</td>
-        <td>{{ m[11] }}</td>
-        <td class="prayer">{{ m[12] }}</td>
+        <div class="stats">
+            <h3>Total Members: {{ total }}</h3>
+        </div>
 
-        <td>
-            <a href="/delete/{{ m[0] }}">
-                <button class="btn delete">Delete</button>
-            </a>
-        </td>
-    </tr>
-    {% endfor %}
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Phone</th>
+                    <th>WhatsApp</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Born Again</th>
+                    <th>Previous Attendance</th>
+                    <th>Heard About Our Church</th>
+                    <th>Preferred Contact</th>
+                    <th>Workforce Interest</th>
+                    <th>Prayer Requests</th>
+                    <th>Action</th>
+                </tr>
 
-</table>
+                {% for m in members %}
+                <tr>
+                    <td>{{ m[0] }}</td>
+                    <td>{{ m[1] }}</td>
+                    <td>{{ m[2] }}</td>
+                    <td>{{ m[3] }}</td>
+                    <td>{{ m[4] }}</td>
+                    <td>{{ m[5] }}</td>
+                    <td>{{ m[6] }}</td>
+                    <td>{{ m[7] }}</td>
+                    <td>{{ m[8] }}</td>
+                    <td>{{ m[9] }}</td>
+                    <td>{{ m[10] }}</td>
+                    <td>{{ m[11] }}</td>
+                    <td>{{ m[12] }}</td>
+                    <td>
+                        <a href="/delete/{{ m[0] }}">
+                            <button class="btn logout">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+
+    </div>
 </div>
 
 </body>
