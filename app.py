@@ -56,7 +56,7 @@ def submit():
     conn.commit()
     conn.close()
 
-    return f"Thank you {name}, your data has been saved!"
+    return redirect('/success')
 
 @app.route('/members')
 def members():
@@ -134,6 +134,10 @@ def login():
 def logout():
     session.pop('admin', None)
     return redirect('/login')
+
+@app.route('/success')
+def success():
+    return render_template('success.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
