@@ -99,6 +99,7 @@
         <th>Preferred Contact</th>
         <th>Workforce Interest</th>
         <th>Action</th>
+        <th>Prayer Requests</th>
     </tr>
 
     {% for m in members %}
@@ -117,6 +118,7 @@
         <td>{{ m[11] }}</td>
         <td>{{ m[12] }}</td>
         <td>{{ m[13] }}</td>
+        <td>{{ m[14] }}</td>
             <a href="/delete/{{ m[0] }}">
                 <button class="btn delete">Delete</button>
             </a>

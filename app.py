@@ -32,7 +32,8 @@ def init_db():
             previous_attendance TEXT,
             heard_about_us TEXT,
             preferred_contact TEXT,
-            workforce_interest TEXT
+            workforce_interest TEXT,
+            prayer_requests TEXT
         )
     """)
 
@@ -59,6 +60,7 @@ def submit():
     heard_about_us = request.form.get("heard_about_us")
     preferred_contact = request.form.get("preferred_contact")
     workforce_interest = request.form.get("workforce_interest")
+    prayer_requests = request.form.get("prayer_requests")
 
     conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
@@ -70,18 +72,34 @@ def submit():
         gender, born_again, previous_attendance,
         heard_about_us, preferred_contact, workforce_interest
     )
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """,
     (
         name, age, phone, whatsapp, email,
         gender, born_again, previous_attendance,
-        heard_about_us, preferred_contact, workforce_interest
+        heard_about_us, preferred_contact, workforce_interest, prayer_requests
     ),
 )
     conn.commit()
     conn.close()
 
     return redirect("/success")
+
+@app.route('/add-prayer-column')
+def add_prayer_column():
+
+    conn = psycopg2.connect(DATABASE_URL)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        ALTER TABLE members
+        ADD COLUMN IF NOT EXISTS prayer_requests TEXT
+    """)
+
+    conn.commit()
+    conn.close()
+
+    return "Prayer column added!"
 
 @app.route('/members')
 def members():
