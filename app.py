@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, session
 import psycopg2
 import os
 
+print("Flask app is starting...")
+
 app = Flask(__name__)
 app.secret_key = "agmidyouth_super_secret_key_2026"
 
