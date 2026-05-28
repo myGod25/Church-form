@@ -1,10 +1,16 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, session
 import psycopg2
 import os
 
 app = Flask(__name__)
+app.secret_key = "agmidyouth_super_secret_key_2026"
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
+
+if not DATABASE_URL:
+    DATABASE_URL = "postgresql://amazing_grace_user:D1WOsKyPA4J7jmlilzWFy8cYJqOUgQjO@dpg-d8bkn0ul51nc73e044ug-a.oregon-postgres.render.com/amazing_grace"
+
+
 
 # Create database and table
 def init_db():
@@ -51,6 +57,79 @@ def submit():
     conn.close()
 
     return f"Thank you {name}, your data has been saved!"
+
+@app.route('/members')
+def members():
+
+    if not session.get('admin'):
+        return redirect('/login')
+
+    conn = psycopg2.connect(DATABASE_URL)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM members")
+    members = cursor.fetchall()
+
+    conn.close()
+
+    return render_template('members.html', members=members)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    conn = psycopg2.connect(DATABASE_URL)
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM members WHERE id = %s", (id,))
+
+    conn.commit()
+    conn.close()
+
+    return redirect('/members')
+
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    conn = psycopg2.connect(DATABASE_URL)
+    cursor = conn.cursor()
+
+    if request.method == 'POST':
+        name = request.form['name']
+        age = request.form['age']
+
+        cursor.execute('''
+            UPDATE members
+            SET name=%s, age=%s
+            WHERE id=%s
+        ''', (name, age, id))
+
+        conn.commit()
+        conn.close()
+
+        return redirect('/members')
+
+    cursor.execute("SELECT * FROM members WHERE id=%s", (id,))
+    member = cursor.fetchone()
+
+    conn.close()
+
+    return render_template('edit.html', member=member)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+    if request.method == 'POST':
+
+        password = request.form['password']
+
+        if password == "churchadmin":
+            session['admin'] = True
+            return redirect('/members')
+
+    return '''
+        <form method="POST">
+            <input type="password" name="password">
+            <button type="submit">Login</button>
+        </form>
+    '''
 
 if __name__ == '__main__':
     app.run(debug=True)

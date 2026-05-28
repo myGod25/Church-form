@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registered Members</title>
+</head>
+<body>
+
+<h1>Registered Members</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Phone</th>
+        <th>WhatsApp</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for member in members %}
+    <tr>
+        <td>{{ member[0] }}</td>
+        <td>{{ member[1] }}</td>
+        <td>{{ member[2] }}</td>
+        <td>{{ member[3] }}</td>
+        <td>{{ member[4] }}</td>
+        <td>{{ member[5] }}</td>
+
+        <td>
+            <a href="/edit/{{ member[0] }}">Edit</a>
+            <a href="/delete/{{ member[0] }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
