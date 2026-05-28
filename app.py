@@ -21,21 +21,21 @@ def init_db():
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS members (
-            id SERIAL PRIMARY KEY,
-            name TEXT,
-            age INTEGER,
-            phone TEXT,
-            whatsapp TEXT,
-            email TEXT,
-            gender TEXT,
-            born_again TEXT,
-            previous_attendance TEXT,
-            heard_about_us TEXT,
-            preferred_contact TEXT,
-            workforce_interest TEXT,
-            prayer_requests TEXT,
-            heard_about_us_detail
-        )
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    age INTEGER,
+    phone TEXT,
+    whatsapp TEXT,
+    email TEXT,
+    gender TEXT,
+    born_again TEXT,
+    previous_attendance TEXT,
+    heard_about_us TEXT,
+    preferred_contact TEXT,
+    workforce_interest TEXT,
+    prayer_requests TEXT,
+    heard_about_us_detail TEXT
+ )
     """)
 
     conn.commit()
