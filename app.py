@@ -85,22 +85,6 @@ def submit():
 
     return redirect("/success")
 
-@app.route('/add-prayer-column')
-def add_prayer_column():
-
-    conn = psycopg2.connect(DATABASE_URL)
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        ALTER TABLE members
-        ADD COLUMN IF NOT EXISTS prayer_requests TEXT
-    """)
-
-    conn.commit()
-    conn.close()
-
-    return "Prayer column added!"
-
 @app.route('/members')
 def members():
 

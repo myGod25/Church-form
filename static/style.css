@@ -12,6 +12,15 @@ body {
     border-radius: 5px;
 }
 
+.logo {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 h1 {
     text-align: center;
     color: #333;
