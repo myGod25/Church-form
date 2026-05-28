@@ -13,7 +13,6 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 if not DATABASE_URL:
     DATABASE_URL = "postgresql://amazing_grace_user:D1WOsKyPA4J7jmlilzWFy8cYJqOUgQjO@dpg-d8bkn0ul51nc73e044ug-a.oregon-postgres.render.com/amazing_grace"
 
-
 # Create database and table
 def init_db():
     conn = psycopg2.connect(DATABASE_URL)
@@ -41,9 +40,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-
 init_db()
-
 
 @app.route("/")
 def home():
@@ -98,7 +95,6 @@ def submit():
     conn.close()
 
     return redirect("/success")
-
 
 @app.route("/members")
 def members():

@@ -7,11 +7,19 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='logo.png') }}"
+    />
     <title>Amazing Grace Midyouth</title>
   </head>
   <body>
-   <img src="{{ url_for('static', filename='logo.png') }}" alt="Church Logo" class="logo">
+    <img
+      src="{{ url_for('static', filename='logo.png') }}"
+      alt="Church Logo"
+      class="logo"
+    />
 
     <h1>Amazing Grace Midyouth Evangelical ministry</h1>
     <h2>Fill this form to register</h2>
@@ -52,56 +60,58 @@
         name="email"
         placeholder="Enter your email (optional)"
       /><br /><br />
-     <h4>Gender</h4>
-<select name="gender" required>
-  <option value="">Select gender</option>
-  <option value="male">Male</option>
-  <option value="female">Female</option>
-</select>
+      <h4>Gender</h4>
+      <select name="gender" required>
+        <option value="">Select gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
       <h4>Are you born again?</h4>
-<select name="born_again" required>
-  <option value="">Select option</option>
-  <option value="yes">Yes</option>
-  <option value="no">No</option>
-</select>
+      <select name="born_again" required>
+        <option value="">Select option</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
 
       <h4>Have you attended this church before?</h4>
-<select name="previous_attendance" required>
-  <option value="">Select option</option>
-  <option value="yes">Yes</option>
-  <option value="no">No</option>
-</select>
+      <select name="previous_attendance" required>
+        <option value="">Select option</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
       <h4>How did you hear about our church?</h4>
-<select name="heard_about_us" required>
-  <option value="">Select option</option>
-  <option value="friend">Friend</option>
-  <option value="social_media">Social Media</option>
-  <option value="evangelism">Evangelism</option>
-  <option value="family_member">Family Member</option>
-  <option value="other">Other</option>
-</select>
+      <select name="heard_about_us" required>
+        <option value="">Select option</option>
+        <option value="friend">Friend</option>
+        <option value="social_media">Social Media</option>
+        <option value="evangelism">Evangelism</option>
+        <option value="family_member">Family Member</option>
+        <option value="other">Other</option>
+      </select>
 
-<textarea name="heard_about_us_detail"
-placeholder="Optional: Give more details"></textarea>
+      <textarea
+        name="heard_about_us_detail"
+        placeholder="Optional: Give more details"
+      ></textarea>
       <h4>Preferred means of contact</h4>
-<select name="preferred_contact" required>
-  <option value="">Select option</option>
-  <option value="call">Call</option>
-  <option value="whatsapp">WhatsApp</option>
-  <option value="sms">SMS</option>
-</select>      <h4>Would you like to join any workforce in the church?</h4>
+      <select name="preferred_contact" required>
+        <option value="">Select option</option>
+        <option value="call">Call</option>
+        <option value="whatsapp">WhatsApp</option>
+        <option value="sms">SMS</option>
+      </select>
       <h4>Would you like to join any workforce in the church?</h4>
-<select name="workforce_interest" required>
-  <option value="">Select option</option>
-  <option value="yes">Yes</option>
-  <option value="no">No</option>
-</select>
+      <select name="workforce_interest" required>
+        <option value="">Select option</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
       <h4>Prayer Requests</h4>
       <textarea
         name="prayer_requests"
         placeholder="Enter your prayer requests"
       ></textarea
-      ><br/><br/>
+      ><br /><br />
       <button type="submit">Submit</button>
     </form>
   </body>
