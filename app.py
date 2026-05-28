@@ -33,7 +33,8 @@ def init_db():
             heard_about_us TEXT,
             preferred_contact TEXT,
             workforce_interest TEXT,
-            prayer_requests TEXT
+            prayer_requests TEXT,
+            heard_about_us_detail TEXT
         )
     """)
 
@@ -63,6 +64,7 @@ def submit():
     preferred_contact = request.form.get("preferred_contact")
     workforce_interest = request.form.get("workforce_interest")
     prayer_requests = request.form.get("prayer_requests")
+    heard_about_us_detail = request.form.get("heard_about_us_detail")
 
     conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
@@ -72,9 +74,9 @@ def submit():
     INSERT INTO members (
         name, age, phone, whatsapp, email,
         gender, born_again, previous_attendance,
-        heard_about_us, preferred_contact, workforce_interest, prayer_requests
+        heard_about_us, preferred_contact, workforce_interest, prayer_requests, heard_about_us_detail
     )
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """,
         (
             name,
@@ -89,6 +91,7 @@ def submit():
             preferred_contact,
             workforce_interest,
             prayer_requests,
+            heard_about_us_detail
         ),
     )
     conn.commit()
