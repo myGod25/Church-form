@@ -190,7 +190,7 @@ def login():
      body {
     margin: 0;
     font-family: Arial;
-    background: #f4f6f9;
+    background: #2a5298;
     display: flex;
     justify-content: center;
     align-items: center;
