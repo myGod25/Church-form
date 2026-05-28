@@ -36,6 +36,11 @@ def init_db():
     heard_about_us_detail TEXT
  )
     """)
+    
+    cursor.execute("""
+        ALTER TABLE members
+        ADD COLUMN IF NOT EXISTS heard_about_us_detail TEXT;
+    """)
 
     conn.commit()
     conn.close()
