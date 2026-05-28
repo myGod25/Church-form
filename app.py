@@ -83,12 +83,6 @@ def submit():
 
     return redirect("/success")
 
-@app.route('/generate-password')
-def generate_password():
-    hashed = generate_password_hash("churchadmin")
-    return hashed
-
-
 @app.route('/members')
 def members():
 
@@ -153,12 +147,14 @@ def edit(id):
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    
+    hashed_password = "scrypt:32768:8:1$0YwnQBTs1sFfM2iv$6e9b518b7beb02699679b1afca5c188010c62d2394110e1e58b7bcb723268088aeed2c13e7e8fa0334680830d348cc5c2724fef8de0683ac896073327b6a62f1"
 
     if request.method == "POST":
 
         password = request.form["password"]
-
-        if password == "churchadmin":
+        
+        if check_password_hash(hashed_password, password):
             session["admin"] = True
             return redirect("/members")
 
