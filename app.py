@@ -70,7 +70,7 @@ def submit():
     INSERT INTO members (
         name, age, phone, whatsapp, email,
         gender, born_again, previous_attendance,
-        heard_about_us, preferred_contact, workforce_interest
+        heard_about_us, preferred_contact, workforce_interest, prayer_requests
     )
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """,
