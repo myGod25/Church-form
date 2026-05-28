@@ -168,6 +168,8 @@ def edit(id):
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
+    error = None
+
     hashed_password = "scrypt:32768:8:1$0YwnQBTs1sFfM2iv$6e9b518b7beb02699679b1afca5c188010c62d2394110e1e58b7bcb723268088aeed2c13e7e8fa0334680830d348cc5c2724fef8de0683ac896073327b6a62f1"
 
     if request.method == "POST":
@@ -177,94 +179,10 @@ def login():
         if check_password_hash(hashed_password, password):
             session["admin"] = True
             return redirect("/members")
-        
-        return render_template("login.html")
+        else:
+            error = "❌ Wrong password. Try again."
 
-    return """
-<!DOCTYPE html>
-<html>
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Admin Login</title>
-
-<style>
-     body {
-    margin: 0;
-    font-family: Arial;
-    background: #2a5298;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-
-/* LOGIN BOX */
-.login-box {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-/* INPUTS */
-.login-box input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-/* BUTTON */
-.login-box button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background: #2a5298;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.login-box button:hover {
-    background: #1e3c72;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .login-box {
-        margin: 20px;
-        max-width: 100%;
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="login-box">
-    <h2>🔐 Admin Login</h2>
-
-    <form method="POST">
-        <input type="password" name="password" placeholder="Enter password" required>
-        <button type="submit">Login</button>
-    </form>
-
-</div>
-
-</body>
-</html>
-"""
-
+    return render_template("login.html", error=error)
 
 @app.route("/logout")
 def logout():
