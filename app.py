@@ -181,7 +181,7 @@ def login():
     <title>Admin Login</title>
 
     <style>
-           body {
+     body {
     margin: 0;
     font-family: Arial;
     background: #f4f6f9;
@@ -191,51 +191,18 @@ def login():
     min-height: 100vh;
 }
 
-        .login-box {
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            width: 320px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        h2 {
-            color: #2a5298;
-            margin-bottom: 20px;
-        }
-
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #2a5298;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #1e3c72;
-        }
-
+/* LOGIN BOX */
 .login-box {
     background: white;
     padding: 25px;
     border-radius: 10px;
     width: 100%;
-    max-width: 400px;   /* important */
+    max-width: 400px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
+/* INPUTS */
 .login-box input {
     width: 100%;
     padding: 12px;
@@ -245,6 +212,7 @@ def login():
     font-size: 16px;
 }
 
+/* BUTTON */
 .login-box button {
     width: 100%;
     padding: 12px;
@@ -256,20 +224,17 @@ def login():
     cursor: pointer;
 }
 
+.login-box button:hover {
+    background: #1e3c72;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
     .login-box {
         margin: 20px;
-        padding: 20px;
         max-width: 100%;
     }
-
-    .login-box input,
-    .login-box button {
-        font-size: 16px; /* prevents tiny text on phones */
-    }
 }
-        
-    </style>
 </head>
 
 <body>
