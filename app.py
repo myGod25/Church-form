@@ -34,7 +34,7 @@ def init_db():
             preferred_contact TEXT,
             workforce_interest TEXT,
             prayer_requests TEXT,
-            heard_about_us_detail TEXT
+            heard_about_us_detail
         )
     """)
 
@@ -74,7 +74,7 @@ def submit():
     INSERT INTO members (
         name, age, phone, whatsapp, email,
         gender, born_again, previous_attendance,
-        heard_about_us, preferred_contact, workforce_interest, prayer_requests, heard_about_us_detail
+        heard_about_us, preferred_contact, workforce_interest, prayer_requests,heard_about_us_detail
     )
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """,

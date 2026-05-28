@@ -52,87 +52,56 @@
         name="email"
         placeholder="Enter your email (optional)"
       /><br /><br />
-      <h4>Gender</h4>
-      <label for="gender">
-        <input type="radio" name="gender" value="male" />
-        Male
-      </label>
-      <label for="gender">
-        <input type="radio" name="gender" value="female" />
-        Female
-      </label>
+     <h4>Gender</h4>
+<select name="gender" required>
+  <option value="">Select gender</option>
+  <option value="male">Male</option>
+  <option value="female">Female</option>
+</select>
       <h4>Are you born again?</h4>
-      <label for="born_again">
-        <input type="radio" name="born_again" value="yes" />
-        Yes
-      </label>
-      <label for="born_again">
-        <input type="radio" name="born_again" value="no" />
-        No
-      </label>
+<select name="born_again" required>
+  <option value="">Select option</option>
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
 
       <h4>Have you attended this church before?</h4>
-      <label for="previous_attendance">
-        <input type="radio" name="previous_attendance" value="yes" />
-        Yes
-      </label>
-      <label for="previous_attendance">
-        <input type="radio" name="previous_attendance" value="no" />
-        No
-      </label>
+<select name="previous_attendance" required>
+  <option value="">Select option</option>
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
       <h4>How did you hear about our church?</h4>
-      <label for="heard_about_us">
-        <input type="radio" name="heard_about_us" value="friend" />
-        Friend
-      </label>
-      <label for="heard_about_us">
-        <input type="radio" name="heard_about_us" value="social_media" />
-        Social Media
-      </label>
-      <label for="heard_about_us">
-        <input type="radio" name="heard_about_us" value="evangelism" />
-        Evangelism
-      </label>
-      <label for="heard_about_us">
-        <input type="radio" name="heard_about_us" value="family_member" />
-        Family Member
-      </label>
-      <label for="heard_about_us">
-        <input type="radio" name="heard_about_us_detail" value="other" />
-        Other
-      </label>
-      <textarea
-        name="heard_about_us"
-        placeholder="Clearly state how or where you knew about our church"
-      ></textarea>
+<select name="heard_about_us" required>
+  <option value="">Select option</option>
+  <option value="friend">Friend</option>
+  <option value="social_media">Social Media</option>
+  <option value="evangelism">Evangelism</option>
+  <option value="family_member">Family Member</option>
+  <option value="other">Other</option>
+</select>
+
+<textarea name="heard_about_us_detail"
+placeholder="Optional: Give more details"></textarea>
       <h4>Preferred means of contact</h4>
-      <label for="preferred_contact">
-        <input type="radio" name="preferred_contact" value="call" />
-        Call
-      </label>
-      <label for="preferred_contact">
-        <input type="radio" name="preferred_contact" value="whatsapp" />
-        WhatsApp
-      </label>
-      <label for="preferred_contact">
-        <input type="radio" name="preferred_contact" value="sms" />
-        SMS
-      </label>
+<select name="preferred_contact" required>
+  <option value="">Select option</option>
+  <option value="call">Call</option>
+  <option value="whatsapp">WhatsApp</option>
+  <option value="sms">SMS</option>
+</select>      <h4>Would you like to join any workforce in the church?</h4>
       <h4>Would you like to join any workforce in the church?</h4>
-      <label for="workforce_interest">
-        <input type="radio" name="workforce_interest" value="yes" />
-        Yes
-      </label>
-      <label for="workforce_interest">
-        <input type="radio" name="workforce_interest" value="no" />
-        No
-      </label>
+<select name="workforce_interest" required>
+  <option value="">Select option</option>
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
       <h4>Prayer Requests</h4>
       <textarea
         name="prayer_requests"
         placeholder="Enter your prayer requests"
       ></textarea
-      ><br /><br />
+      ><br/><br/>
       <button type="submit">Submit</button>
     </form>
   </body>
