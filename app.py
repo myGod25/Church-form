@@ -49,17 +49,17 @@ def home():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    name = request.form["name"]
-    age = request.form["age"]
-    phone = request.form["phone_number"]
-    whatsapp = request.form["whatsapp_number"]
-    email = request.form["email"]
-    gender = request.form["gender"]
-    born_again = request.form["born_again"]
-    previous_attendance = request.form["previous_attendance"]
-    heard_about_us = request.form["heard_about_us"]
-    preferred_contact = request.form["preferred_contact"]
-    workforce_interest = request.form["workforce_interest"]
+    name = request.form.get("name")
+    age = request.form.get("age")
+    phone = request.form.get("phone_number")
+    whatsapp = request.form.get("whatsapp_number")
+    email = request.form.get("email")
+    gender = request.form.get("gender")
+    born_again = request.form.get("born_again")
+    previous_attendance = request.form.get("previous_attendance")
+    heard_about_us = request.form.get("heard_about_us")
+    preferred_contact = request.form.get("preferred_contact")
+    workforce_interest = request.form.get("workforce_interest")
 
     conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
@@ -146,28 +146,6 @@ def edit(id):
     conn.close()
 
     return render_template("edit.html", member=member)
-
-@app.route('/update-db')
-def update_db():
-
-    conn = psycopg2.connect(DATABASE_URL)
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        ALTER TABLE members
-        ADD COLUMN IF NOT EXISTS gender TEXT,
-        ADD COLUMN IF NOT EXISTS born_again TEXT,
-        ADD COLUMN IF NOT EXISTS previous_attendance TEXT,
-        ADD COLUMN IF NOT EXISTS heard_about_us TEXT,
-        ADD COLUMN IF NOT EXISTS preferred_contact TEXT,
-        ADD COLUMN IF NOT EXISTS workforce_interest TEXT
-    """)
-
-    conn.commit()
-    conn.close()
-
-    return "Database updated successfully!"
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
