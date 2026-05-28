@@ -66,7 +66,7 @@ def submit():
     return redirect("/success")
 
 
-@app.route("/members")
+@app.route('/members')
 def members():
 
     if not session.get("admin"):
@@ -75,13 +75,15 @@ def members():
     conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM members")
+    cursor.execute("SELECT * FROM members ORDER BY id DESC")
     members = cursor.fetchall()
+
+    cursor.execute("SELECT COUNT(*) FROM members")
+    total = cursor.fetchone()[0]
 
     conn.close()
 
-    return render_template("members.html", members=members)
-
+    return render_template("admin.html", members=members, total=total)
 
 @app.route("/delete/<int:id>")
 def delete(id):
