@@ -1,124 +1,92 @@
- * {
-        box-sizing: border-box;
-      }
 
-      body {
-        margin: 0;
-        font-family: Arial;
-        background: #f4f6f9;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-      }
+*{
+    box-sizing:border-box;
+}
 
-      /* LOGIN BOX */
-      .login-box {
-        background: white;
-        padding: 25px;
-        border-radius: 10px;
-        width: 100%;
-        max-width: 400px; /* important */
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      }
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f6f9;
+}
 
-      /* INPUTS */
-      .login-box input {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 16px;
-      }
+/* HEADER */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    background:#2a5298;
+    color:white;
+}
 
-      /* BUTTON */
-      .login-box button {
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 6px;
-        background: #2a5298;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-      }
-      /* NORMAL (desktop + default styles) */
-      .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #2a5298;
-        color: white;
-        padding: 15px;
-        border-radius: 10px;
-      }
+/* STATS */
+.stats{
+    margin:15px;
+    padding:15px;
+    background:white;
+    border-radius:10px;
+}
 
-      .stats {
-        margin-top: 20px;
-        padding: 15px;
-        background: white;
-        border-radius: 10px;
-      }
+/* TABLE WRAPPER */
+.table-container{
+    width:100%;
+    overflow-x:auto;
+    padding:15px;
+}
 
-      table {
-        width: 100%;
-        margin-top: 20px;
-        border-collapse: collapse;
-        background: white;
-        border-radius: 10px;
-        overflow: hidden;
-      }
+/* TABLE */
+table{
+    width:100%;
+    min-width:900px;
+    border-collapse:collapse;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+}
 
-      th,
-      td {
-        padding: 12px;
-        border-bottom: 1px solid #ddd;
-        text-align: left;
-      }
+th,td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
 
-      th {
-        background: #2a5298;
-        color: white;
-      }
+th{
+    background:#2a5298;
+    color:white;
+}
 
-      .btn {
-        padding: 6px 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
+/* BUTTONS */
+.btn{
+    padding:6px 10px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
 
-      .delete {
-        background: red;
-        color: white;
-      }
+.delete{
+    background:red;
+    color:white;
+}
 
-      .logout {
-        background: #ff4444;
-        color: white;
-      }
+.logout{
+    background:#ff4444;
+    color:white;
+}
 
-      /* ONLY MOBILE CHANGES */
-      @media screen and (max-width: 768px) {
-        .header {
-          flex-direction: column;
-          gap: 10px;
-          text-align: center;
-        }
+/* MOBILE */
+@media(max-width:768px){
 
-        table {
-          font-size: 14px;
-        }
+    .header{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
 
-        .login-box {
-          margin: 20px;
-          padding: 20px;
-          max-width: 100%;
-        }
+    table{
+        font-size:13px;
+    }
 
-        .login-box input,
-        .login-box button {
-          font-size: 16px; /* prevents tiny text on phones */
-        }
-      }
+    .stats{
+        text-align:center;
+    }
+}
