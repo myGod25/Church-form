@@ -21,6 +21,27 @@ body {
     object-fit: cover;
 }
 
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    min-width: 1400px;
+    border-collapse: collapse;
+}
+
+th, td {
+    white-space: nowrap;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    max-width: 250px;
+    overflow-wrap: break-word;
+}
+
 h1 {
     text-align: center;
     color: #333;
