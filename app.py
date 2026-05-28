@@ -42,6 +42,8 @@ def init_db():
 
 
 init_db()
+
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -66,7 +68,7 @@ def submit():
     cursor = conn.cursor()
 
     cursor.execute(
-    """
+        """
     INSERT INTO members (
         name, age, phone, whatsapp, email,
         gender, born_again, previous_attendance,
@@ -74,18 +76,28 @@ def submit():
     )
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """,
-    (
-        name, age, phone, whatsapp, email,
-        gender, born_again, previous_attendance,
-        heard_about_us, preferred_contact, workforce_interest, prayer_requests
-    ),
-)
+        (
+            name,
+            age,
+            phone,
+            whatsapp,
+            email,
+            gender,
+            born_again,
+            previous_attendance,
+            heard_about_us,
+            preferred_contact,
+            workforce_interest,
+            prayer_requests,
+        ),
+    )
     conn.commit()
     conn.close()
 
     return redirect("/success")
 
-@app.route('/members')
+
+@app.route("/members")
 def members():
 
     if not session.get("admin"):
@@ -103,6 +115,7 @@ def members():
     conn.close()
 
     return render_template("admin.html", members=members, total=total)
+
 
 @app.route("/delete/<int:id>")
 def delete(id):
@@ -147,15 +160,16 @@ def edit(id):
 
     return render_template("edit.html", member=member)
 
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    
+
     hashed_password = "scrypt:32768:8:1$0YwnQBTs1sFfM2iv$6e9b518b7beb02699679b1afca5c188010c62d2394110e1e58b7bcb723268088aeed2c13e7e8fa0334680830d348cc5c2724fef8de0683ac896073327b6a62f1"
 
     if request.method == "POST":
 
         password = request.form["password"]
-        
+
         if check_password_hash(hashed_password, password):
             session["admin"] = True
             return redirect("/members")
@@ -167,14 +181,15 @@ def login():
     <title>Admin Login</title>
 
     <style>
-        body {
-            font-family: Arial;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+           body {
+    margin: 0;
+    font-family: Arial;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
         .login-box {
             background: white;
@@ -211,6 +226,49 @@ def login():
         button:hover {
             background: #1e3c72;
         }
+
+.login-box {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;   /* important */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #2a5298;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .login-box {
+        margin: 20px;
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .login-box input,
+    .login-box button {
+        font-size: 16px; /* prevents tiny text on phones */
+    }
+}
+        
     </style>
 </head>
 

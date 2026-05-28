@@ -1,209 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <h2>📊 Admin Dashboard</h2>
+      <a href="/logout"><button class="btn logout">Logout</button></a>
+    </div>
 
-    <style>
-       * {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #f4f6f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-/* LOGIN BOX */
-.login-box {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 400px;   /* important */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-/* INPUTS */
-.login-box input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-/* BUTTON */
-.login-box button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background: #2a5298;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-/* NORMAL (desktop + default styles) */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #2a5298;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.stats {
-    margin-top: 20px;
-    padding: 15px;
-    background: white;
-    border-radius: 10px;
-}
-
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-th, td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background: #2a5298;
-    color: white;
-}
-
-.btn {
-    padding: 6px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.delete {
-    background: red;
-    color: white;
-}
-
-.logout {
-    background: #ff4444;
-    color: white;
-}
-
-/* ONLY MOBILE CHANGES */
-@media screen and (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-
-    table {
-        font-size: 14px;
-    }
-
-     .login-box {
-        margin: 20px;
-        padding: 20px;
-        max-width: 100%;
-    }
-
-    .login-box input,
-    .login-box button {
-        font-size: 16px; /* prevents tiny text on phones */
-    }
-
-}    </style>
-</head>
-<body>
-
-<div class="header">
-    <h2>📊 Admin Dashboard</h2>
-    <a href="/logout"><button class="btn logout">Logout</button></a>
-</div>
-
-<div class="container">
-
-    <!-- SIDEBAR -->
-    <div class="sidebar">
+    <div class="container">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
         <a href="#">Dashboard</a>
         <a href="#">Members</a>
         <a href="#">Reports</a>
         <a href="#">Settings</a>
-    </div>
+      </div>
 
-    <!-- MAIN -->
-    <div class="main">
-
+      <!-- MAIN -->
+      <div class="main">
         <div class="stats">
-            <h3>Total Members: {{ total }}</h3>
+          <h3>Total Members: {{ total }}</h3>
         </div>
 
         <div class="table-container">
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Phone</th>
-                    <th>WhatsApp</th>
-                    <th>Email</th>
-                    <th>Gender</th>
-                    <th>Born Again</th>
-                    <th>Previous Attendance</th>
-                    <th>Heard About Our Church</th>
-                    <th>Preferred Contact</th>
-                    <th>Workforce Interest</th>
-                    <th>Prayer Requests</th>
-                    <th>Action</th>
-                </tr>
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Phone</th>
+              <th>WhatsApp</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>Born Again</th>
+              <th>Previous Attendance</th>
+              <th>Heard About Our Church</th>
+              <th>Preferred Contact</th>
+              <th>Workforce Interest</th>
+              <th>Prayer Requests</th>
+              <th>Action</th>
+            </tr>
 
-                {% for m in members %}
-                <tr>
-                    <td>{{ m[0] }}</td>
-                    <td>{{ m[1] }}</td>
-                    <td>{{ m[2] }}</td>
-                    <td>{{ m[3] }}</td>
-                    <td>{{ m[4] }}</td>
-                    <td>{{ m[5] }}</td>
-                    <td>{{ m[6] }}</td>
-                    <td>{{ m[7] }}</td>
-                    <td>{{ m[8] }}</td>
-                    <td>{{ m[9] }}</td>
-                    <td>{{ m[10] }}</td>
-                    <td>{{ m[11] }}</td>
-                    <td>{{ m[12] }}</td>
-                    <td>
-                        <a href="/delete/{{ m[0] }}">
-                            <button class="btn logout">Delete</button>
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-
-            </table>
+            {% for m in members %}
+            <tr>
+              <td>{{ m[0] }}</td>
+              <td>{{ m[1] }}</td>
+              <td>{{ m[2] }}</td>
+              <td>{{ m[3] }}</td>
+              <td>{{ m[4] }}</td>
+              <td>{{ m[5] }}</td>
+              <td>{{ m[6] }}</td>
+              <td>{{ m[7] }}</td>
+              <td>{{ m[8] }}</td>
+              <td>{{ m[9] }}</td>
+              <td>{{ m[10] }}</td>
+              <td>{{ m[11] }}</td>
+              <td>{{ m[12] }}</td>
+              <td>
+                <a href="/delete/{{ m[0] }}">
+                  <button class="btn logout">Delete</button>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
         </div>
-
+      </div>
     </div>
-</div>
-
-</body>
+  </body>
 </html>
