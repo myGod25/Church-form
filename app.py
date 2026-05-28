@@ -25,7 +25,13 @@ def init_db():
             age INTEGER,
             phone TEXT,
             whatsapp TEXT,
-            email TEXT
+            email TEXT,
+            gender TEXT,
+            born_again TEXT,
+            previous_attendance TEXT,
+            heard_about_us TEXT,
+            preferred_contact TEXT,
+            workforce_interest TEXT
         )
     """)
 
@@ -48,18 +54,31 @@ def submit():
     phone = request.form["phone_number"]
     whatsapp = request.form["whatsapp_number"]
     email = request.form["email"]
+    gender = request.form["gender"]
+    born_again = request.form["born_again"]
+    previous_attendance = request.form["previous_attendance"]
+    heard_about_us = request.form["heard_about_us"]
+    preferred_contact = request.form["preferred_contact"]
+    workforce_interest = request.form["workforce_interest"]
 
     conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
 
     cursor.execute(
-        """
-        INSERT INTO members (name, age, phone, whatsapp, email)
-        VALUES (%s, %s, %s, %s, %s)
-    """,
-        (name, age, phone, whatsapp, email),
+    """
+    INSERT INTO members (
+        name, age, phone, whatsapp, email,
+        gender, born_again, previous_attendance,
+        heard_about_us, preferred_contact, workforce_interest
     )
-
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+""",
+    (
+        name, age, phone, whatsapp, email,
+        gender, born_again, previous_attendance,
+        heard_about_us, preferred_contact, workforce_interest
+    ),
+)
     conn.commit()
     conn.close()
 
