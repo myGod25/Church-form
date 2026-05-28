@@ -3,12 +3,46 @@
 }
 
 body {
+    margin: 0;
     font-family: Arial;
     background: #f4f6f9;
-    margin: 0;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
+/* LOGIN BOX */
+.login-box {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;   /* important */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* INPUTS */
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* BUTTON */
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #2a5298;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
 /* NORMAL (desktop + default styles) */
 .header {
     display: flex;
@@ -75,4 +109,16 @@ th {
     table {
         font-size: 14px;
     }
+
+     .login-box {
+        margin: 20px;
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .login-box input,
+    .login-box button {
+        font-size: 16px; /* prevents tiny text on phones */
+    }
+
 }
