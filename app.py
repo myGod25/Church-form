@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
+from werkzeug.security import generate_password_hash, check_password_hash
 import psycopg2
 import os
 
@@ -40,8 +41,6 @@ def init_db():
 
 
 init_db()
-
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -83,6 +82,11 @@ def submit():
     conn.close()
 
     return redirect("/success")
+
+@app.route('/generate-password')
+def generate_password():
+    hashed = generate_password_hash("churchadmin")
+    return hashed
 
 
 @app.route('/members')
