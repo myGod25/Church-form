@@ -19,11 +19,13 @@ body{
     color:white;
 }
 
-.long_text { 
+.long_text {
     max-width: 250px;
+    max-height: 100px;
+    overflow-y: auto;
     white-space: normal;
     word-wrap: break-word;
-    overflow-wrap: break-word;
+    padding: 10px;
 }
 
 
