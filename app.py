@@ -33,13 +33,15 @@ def init_db():
     preferred_contact TEXT,
     workforce_interest TEXT,
     prayer_requests TEXT,
-    heard_about_us_detail TEXT
+    heard_about_us_detail TEXT,
+    parent_number TEXT
  )
     """)
     
     cursor.execute("""
         ALTER TABLE members
         ADD COLUMN IF NOT EXISTS heard_about_us_detail TEXT;
+        ADD COLUMN IF NOT EXISTS parent_number TEXT;
     """)
 
     conn.commit()
@@ -67,7 +69,7 @@ def submit():
     workforce_interest = request.form.get("workforce_interest")
     prayer_requests = request.form.get("prayer_requests")
     heard_about_us_detail = request.form.get("heard_about_us_detail")
-
+    parent_number = request.form.get("parent_number")
     conn = psycopg2.connect(DATABASE_URL)
     cursor = conn.cursor()
 
@@ -76,9 +78,9 @@ def submit():
     INSERT INTO members (
         name, age, phone, whatsapp, email,
         gender, born_again, previous_attendance,
-        heard_about_us, preferred_contact, workforce_interest, prayer_requests,heard_about_us_detail
+        heard_about_us, preferred_contact, workforce_interest, prayer_requests,heard_about_us_detail, parent_number
     )
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """,
         (
             name,
@@ -93,7 +95,8 @@ def submit():
             preferred_contact,
             workforce_interest,
             prayer_requests,
-            heard_about_us_detail
+            heard_about_us_detail,
+            parent_number
         )
     )
     conn.commit()
