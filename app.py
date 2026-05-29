@@ -42,7 +42,12 @@ def init_db():
         ALTER TABLE members
         ADD COLUMN IF NOT EXISTS heard_about_us_detail TEXT;
     """)
-
+    
+    cursor.execute("""
+        ALTER TABLE members 
+        ADD COLUMN IF NOT EXISTS parent_number TEXT;
+""")
+    
     conn.commit()
     conn.close()
 
