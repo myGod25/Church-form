@@ -19,6 +19,14 @@ body{
     color:white;
 }
 
+.long_text { 
+    max-width: 250px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+
 /* STATS */
 .stats{
     margin:15px;
