@@ -19,8 +19,10 @@ body{
     color:white;
 }
 
-.long_text { 
+.long_text {
+    
     max-width: 250px;
+    max-width: 350px;
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -45,7 +47,7 @@ body{
 /* TABLE */
 table{
     width:100%;
-    min-width:1200px;
+    min-width:900px;
     border-collapse:collapse;
     background:white;
     border-radius:10px;
