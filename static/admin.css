@@ -21,10 +21,10 @@ body{
 
 .long_text {
     
-    max-width: 250px;
-    max-width: 350px;
+    min-width: 300px;
+    max-width: 500px;
     white-space: normal;
-    word-wrap: break-word;
+    word-break: normal;
     overflow-wrap: break-word;
 }
 
@@ -58,6 +58,7 @@ th,td{
     padding:12px;
     border-bottom:1px solid #ddd;
     text-align:left;
+    vertical-align:top;
 }
 
 th{
